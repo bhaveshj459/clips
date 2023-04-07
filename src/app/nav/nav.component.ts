@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelService } from '../services/model.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public model:ModelService) { }
+
+  openModel(event:Event){
+    event.preventDefault();
+    this.model.toggleModel('auth')
+  }
 
   ngOnInit(): void {
   }

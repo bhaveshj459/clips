@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModelService } from 'src/app/services/model.service';
 
 @Component({
@@ -7,8 +7,13 @@ import { ModelService } from 'src/app/services/model.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
+  @Input() modelid=''
   constructor(public model: ModelService) {
     // console.log(model.IsVisible);
+  }
+
+  closeModel(){
+    this.model.toggleModel()
   }
 
   ngOnInit(): void {}

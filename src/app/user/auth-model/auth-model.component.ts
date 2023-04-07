@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelService } from 'src/app/services/model.service';
 
 @Component({
   selector: 'app-auth-model',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthModelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public model:ModelService) { }
 
   ngOnInit(): void {
+    this.model.register('auth')
+    
+    this.model.register('test')
   }
 
 }

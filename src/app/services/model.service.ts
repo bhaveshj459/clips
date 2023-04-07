@@ -1,17 +1,31 @@
 import { Injectable } from '@angular/core';
+interface IModel{
+  id:string,
+  visible:boolean
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModelService {
-  private visible = false;
+  private models:IModel[] = [];
   constructor() {}
 
-  isModelOpen() {
-    return this.visible;
+  isModelOpen(id:string):boolean {
+    return !!this.models.find(element=>element.id===id)?.visible
+  }
+  register(id:string){
+    this.models.push({
+      id,
+      visible:false
+    })
+
   }
 
-  toggleModel() {
-    this.visible = !this.visible;
+  toggleModel(id:string) {
+   let model= this.models.find(element=>element.id===id)
+   if (model) {
+    model.visible=!model.visible
+   }
   }
 }
