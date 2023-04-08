@@ -7,13 +7,13 @@ import { ModelService } from 'src/app/services/model.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
-  @Input() modelid=''
+  @Input() modelid = '';
   constructor(public model: ModelService) {
     // console.log(model.IsVisible);
   }
 
-  closeModel(){
-    this.model.toggleModel()
+  closeModel(modelid: string) {
+    this.model.toggleModel(modelid);
   }
 
   ngOnInit(): void {}
