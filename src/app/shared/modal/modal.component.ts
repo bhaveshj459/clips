@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { ModelService } from 'src/app/services/model.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ModelService } from 'src/app/services/model.service';
 })
 export class ModalComponent implements OnInit {
   @Input() modelid = '';
-  constructor(public model: ModelService) {
+  constructor(public model: ModelService, public el: ElementRef) {
     // console.log(model.IsVisible);
   }
 
@@ -16,5 +16,7 @@ export class ModalComponent implements OnInit {
     this.model.toggleModel(modelid);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.appendChild(this.el.nativeElement);
+  }
 }
